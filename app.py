@@ -4,7 +4,16 @@ Desenvolvido com Streamlit, utilizando o motor de inferencia Experta.
 Atividade Academica de Inteligencia Artificial — Ciencia da Computacao, UNIPAC Barbacena.
 """
 
+import sys
 import streamlit as st
+from streamlit.runtime import exists
+
+# Se for executado diretamente com 'python app.py', inicia o servidor Streamlit automaticamente
+if not exists():
+    from streamlit.web import cli as stcli
+    sys.argv = ["streamlit", "run", sys.argv[0]]
+    sys.exit(stcli.main())
+
 import src.compat  # noqa: F401
 from src.questions import PERGUNTAS, DIMENSOES_OBRIGATORIAS
 from src.engine_runner import recomendar, validar_respostas
@@ -123,6 +132,10 @@ def reiniciar_entrevista():
     """Limpa as respostas e os resultados armazenados na sessao."""
     st.session_state["respostas"] = {}
     st.session_state["resultado"] = None
+    for p in PERGUNTAS:
+        k = f"field_{p['id']}"
+        if k in st.session_state:
+            del st.session_state[k]
     st.rerun()
 
 
@@ -297,9 +310,13 @@ else:
                 rotulos = [op["rotulo"] for op in opcoes]
                 valores = [op["valor"] for op in opcoes]
 
-                # Determina indice selecionado previamente se houver
-                valor_atual = st.session_state["respostas"].get(p_id, valores[0])
-                idx_default = valores.index(valor_atual) if valor_atual in valores else 0
+                # Determina indice selecionado previamente se houver (padrao None = desmarcado)
+                valor_atual = st.session_state["respostas"].get(p_id, None)
+                idx_default = (
+                    valores.index(valor_atual)
+                    if (valor_atual is not None and valor_atual in valores)
+                    else None
+                )
 
                 escolha = st.radio(
                     label=titulo,
@@ -310,8 +327,11 @@ else:
                 )
 
                 # Mapeia rotulo de volta para o valor canonico
-                escolha_idx = rotulos.index(escolha)
-                respostas_temp[p_id] = valores[escolha_idx]
+                if escolha is not None:
+                    escolha_idx = rotulos.index(escolha)
+                    respostas_temp[p_id] = valores[escolha_idx]
+                else:
+                    respostas_temp[p_id] = None
 
             st.write("")
 
@@ -327,8 +347,12 @@ else:
             # Validacao das respostas obrigatorias
             ausentes = validar_respostas(respostas_temp)
             if ausentes:
+                nomes_ausentes = [
+                    next((p["titulo"] for p in PERGUNTAS if p["id"] == a), a)
+                    for a in ausentes
+                ]
                 st.error(
-                    f"Preencha todas as dimensoes obrigatorias: {', '.join(ausentes)}."
+                    f"Por favor, responda as dimensoes obrigatorias: {', '.join(nomes_ausentes)}."
                 )
             else:
                 st.session_state["respostas"] = respostas_temp
