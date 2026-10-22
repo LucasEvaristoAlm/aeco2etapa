@@ -1,225 +1,178 @@
-# 🧭 Consultor Inteligente de Carreiras em TI
-### Sistema Especialista Baseado em Regras com Motor Experta (Forward Chaining) e Interface Streamlit
+# Consultor de Carreiras em TI
+### Sistema Especialista Baseado em Regras com Motor Experta e Interface Streamlit
 
-> **Atividade Acadêmica:** Inteligência Artificial — Ciência da Computação, UNIPAC Barbacena.
-
----
-
-## 📌 1. Visão Geral do Projeto
-
-O **Consultor Inteligente de Carreiras em TI** é um sistema especialista fundamentado em regras de produção (SE-ENTÃO) projetado para orientar estudantes e profissionais na escolha da trilha de carreira ideal no vasto mercado de Tecnologia da Informação.
-
-Através de uma **entrevista diagnóstica dinâmica**, o sistema coleta dados sobre afinidade matemática, preferências de rotina diária, ecossistema tecnológico e tipo de entrega de valor preferida. Utilizando um motor de inferência por **encadeamento para frente (*forward chaining*)**, a base de conhecimento processa fatos, gera indicadores intermediários, aplica regras de pontuação cruzada e desambiguação e conclui **exatamente uma recomendação primária**, acompanhada de justificativa transparente (regras disparadas) e ranking completo.
+Trabalho prático da disciplina de Inteligência Artificial do curso de Ciência da Computação da UNIPAC Barbacena.
 
 ---
 
-## 🎯 2. Escopo: As 10 Trilhas Mapeadas
+## 1. Descricao do Projeto
 
-O sistema diferencia e avalia com precisão as seguintes 10 trilhas profissionais:
+O sistema consiste em um classificador vocacional baseado em regras de producao (SE-ENTAO) que avalia o perfil de um usuario e recomenda uma entre 10 trilhas profissionais de Tecnologia da Informacao.
 
-| # | Trilha Profissional | Foco e Responsabilidades |
+A solucao utiliza encadeamento para frente (forward chaining) implementado com a biblioteca Experta. A inferencia opera sobre os fatos coletados em um questionario estruturado, deduz indicadores intermediarios, aplica regras de pontuacao ponderada, resolve ambiguidades entre perfis semelhantes e seleciona deterministicamente a trilha mais adequada, fornecendo a justificativa por meio do historico das regras disparadas.
+
+---
+
+## 2. Escopo das 10 Trilhas Profissionais
+
+O sistema avalia e diferencia as seguintes 10 trilhas:
+
+| ID | Trilha | Escopo de Atuacao |
 |---|---|---|
-| 1 | **⚙️ Desenvolvimento Back-end** | Lógica de servidores, APIs RESTful/GraphQL, regras de negócio e bancos de dados relacionais/NoSQL. |
-| 2 | **🎨 Desenvolvimento Front-end & UI/UX** | Interfaces web responsivas, experiência do usuário (UX), acessibilidade e frameworks reativos modernos. |
-| 3 | **🧠 Ciência de Dados e Machine Learning** | Estatística inferencial, modelagem preditiva, análise de dados e algoritmos de Inteligência Artificial. |
-| 4 | **🚰 Engenharia de Dados** | Arquitetura de dados em larga escala, pipelines de ingestão (ETL/ELT), Data Lakes e data warehouses. |
-| 5 | **🛡️ Cibersegurança (Security / Pentesting)** | Defesa cibernética, análise de vulnerabilidades, ethical hacking, criptografia e proteção de redes. |
-| 6 | **🚀 DevOps & SRE** | Automação operacional, integração e entrega contínua (CI/CD), contêineres (Docker/K8s) e alta disponibilidade. |
-| 7 | **☁️ Computação em Nuvem (Cloud Architecture)** | Planejamento, migração e governança de infraestruturas escaláveis e distribuídas em nuvem (AWS/Azure/GCP). |
-| 8 | **📱 Desenvolvimento Mobile** | Ecossistema de dispositivos móveis com desenvolvimento nativo (Kotlin/Swift) ou multiplataforma (Flutter/React Native). |
-| 9 | **🧪 Engenharia de Qualidade e Testes (QA)** | Testes automatizados (E2E, integração, carga), prevenção de falhas e garantia de conformidade de software. |
-| 10 | **📊 Gestão de Produtos (Product Management)** | Ponte entre negócios, design e desenvolvimento, metodologias ágeis (Scrum/Kanban) e priorização estratégica. |
+| `backend` | Desenvolvimento Back-end | Logica de negocio em servidores, construcao de APIs RESTful/GraphQL e persistencia em bancos de dados relacionais e NoSQL. |
+| `frontend` | Desenvolvimento Front-end & UI/UX | Desenvolvimento de interfaces web, usabilidade, acessibilidade e consumo de servicos via frameworks reativos. |
+| `ciencia_dados` | Ciencia de Dados e Machine Learning | Analise exploratoria, inferencia estatistica, modelagem preditiva e treino de algoritmos de aprendizado de maquina. |
+| `engenharia_dados` | Engenharia de Dados | Construcao de pipelines de extracao e carga (ETL/ELT), arquitetura de Data Lakes e sustentacao de dados em larga escala. |
+| `ciberseguranca` | Ciberseguranca (Security / Pentesting) | Analise de vulnerabilidades, auditoria de seguranca, testes de invasao, criptografia aplicada e defesa de redes. |
+| `devops` | DevOps & SRE | Automacao de esteiras de integracao e entrega continua (CI/CD), orquestracao de conteineres e confiabilidade de sistemas. |
+| `cloud` | Computacao em Nuvem (Cloud Architecture) | Planejamento, migracao e dimensionamento de infraestruturas distribuidas em provedores como AWS, Azure e GCP. |
+| `mobile` | Desenvolvimento Mobile | Construcao de aplicativos para dispositivos moveis (Android e iOS) em ambientes nativos ou multiplataforma. |
+| `qa` | Engenharia de Qualidade e Testes (QA) | Planejamento e execucao de suites de testes automatizados (unitarios, integracao e ponta a ponta), prevencao de regressoes e analise de conformidade. |
+| `gestao_produtos` | Gestao de Produtos (Product Management) | Definicao de estrategia de produto, priorizacao de backlog, alinhamento com stakeholders e aplicacao de metodologias ageis. |
 
 ---
 
-## 🏗️ 3. Arquitetura do Sistema e Estratégia de Inferência
+## 3. Arquitetura e Fluxo de Inferencia
 
-O projeto foi estruturado seguindo os princípios de modularidade, separação estrita de responsabilidades (SOLID) e ausência de lógica de decisão na camada de interface gráfica (`app.py`).
+O projeto foi dividido em modulos independentes para desacoplar a interface grafica do motor de inferencia:
 
 ```
 consultor-carreiras-ti/
-├── README.md                   # Documentação completa e guia de execução
-├── requirements.txt            # Dependências com versões estritamente fixadas
-├── .gitignore                  # Arquivos ignorados pelo controle de versão Git
-├── app.py                      # Interface Web moderna em Streamlit (apenas UI + chamadas)
+├── README.md                   # Documentacao tecnica do projeto
+├── requirements.txt            # Dependencias do ambiente
+├── .gitignore                  # Arquivos desconsiderados pelo Git
+├── app.py                      # Interface grafica em Streamlit
 ├── docs/
-│   └── matriz_decisao.md       # Fase 1: Matriz formal de regras e condições SE-ENTÃO
+│   └── matriz_decisao.md       # Matriz de regras e condicoes de ativacao
 ├── src/
-│   ├── __init__.py             # Inicialização do pacote com patch automático
-│   ├── compat.py               # Patch essencial de compatibilidade do Experta em Python 3.10+
-│   ├── facts.py                # Fatos Experta: PerfilUsuario, Indicador, Pontuacao, Recomendacao
-│   ├── trilhas.py              # Catálogo oficial e metadados das 10 trilhas
-│   ├── questions.py            # Catálogo estruturado de perguntas (fonte única para UI e testes)
-│   ├── knowledge_base.py       # KnowledgeEngine com 38 regras @Rule em camadas
-│   └── engine_runner.py        # Interface desacoplada: recomendar(respostas) -> resultado
+│   ├── __init__.py             # Inicializacao do pacote com import do patch
+│   ├── compat.py               # Compatibilidade da Experta com Python 3.10+
+│   ├── facts.py                # Definicao das classes de fatos (Fact)
+│   ├── trilhas.py              # Catalogo de metadados das trilhas
+│   ├── questions.py            # Definicao das perguntas e opcoes da entrevista
+│   ├── knowledge_base.py       # KnowledgeEngine contendo as 38 regras @Rule
+│   └── engine_runner.py        # Ponto de entrada da inferencia e validacao de dados
 └── tests/
     ├── __init__.py
-    ├── test_personas.py        # Suíte de validação com 10 personas completas (uma por trilha)
-    └── test_regras.py          # Testes de contagem de regras, desambiguações e fallback
+    ├── test_personas.py        # Testes automatizados com 10 personas
+    └── test_regras.py          # Testes de cobertura de regras, desambiguacao e fallback
 ```
 
-### Inferência Forward Chaining em 5 Camadas
+### Estrutura da Base de Conhecimento em Camadas
 
-```
-[ Entrevista Diagnóstica ]
-           │
-           ▼
-[ Camada 1: Fato de Entrada: PerfilUsuario(...) ]
-           │
-           ▼
-[ Camada 2: Indicadores Intermediários: Indicador(tipo=...) ] (Salience: 10)
-           │
-           ▼
-[ Camada 3: Regras Cruzadas de Pontuação por Trilha ] (Salience: 0)
-           │
-           ▼
-[ Camada 4: Regras de Desambiguação Crítica ] (Salience: 20)
-           │
-           ▼
-[ Camada 5: Decisão Final Determinística e Fallback ] (Salience: -50 e -100)
-           │
-           ▼
-[ Recomendacao Final + Ranking + Justificativa ]
-```
+A inferencia ocorre em 5 etapas sequenciais organizadas por niveis de prioridade (salience):
 
-1. **Camada 1 — Fatos de Entrada:** Injeção das respostas do questionário via `PerfilUsuario(...)`.
-2. **Camada 2 — Indicadores Intermediários (`salience=10`):** Dedução de fatos derivados (ex: `perfil_matematico_ia`, `perfil_infra_automacao`, `perfil_defesa_cibernetica`, etc.).
-3. **Camada 3 — Regras Cruzadas de Pontuação (`salience=0`):** Combinação de respostas e indicadores com operadores lógicos (`AND`, `OR`, `MATCH`, `TEST`, `L`), acumulando pontuações ponderadas.
-4. **Camada 4 — Desambiguações Críticas (`salience=20`):** Regras de desempate refinado para fronteiras comuns:
-   - **Ciência de Dados × Engenharia de Dados:** Diferenciação por interesse explícito em IA e matemática alta vs. foco em pipelines e ETL.
-   - **Front-end × Mobile:** Diferenciação pela plataforma Web vs. celular.
-   - **Back-end × Cloud × DevOps:** Separação entre código de APIs, governança em nuvem e automação CI/CD.
-   - **Cibersegurança × Infraestrutura:** Diferenciação pela mentalidade de ataque defensivo e auditoria.
-   - **QA × Back-end:** Separação entre foco em novas funcionalidades vs. cobertura e prevenção cirúrgica de falhas.
-   - **Gestão de Produtos × Front-end:** Separação entre codificação de telas vs. articulação com pessoas e mercado.
-5. **Camada 5 — Decisão Final e Fallback (`salience <= -50`):** Escolhe exatamente uma trilha vencedora, desempata deterministicamente pela ordem do catálogo oficial e aplica regra de *fallback* amigável caso o usuário apresente perfil totalmente indeciso.
+1. **Camada 1 (Fatos de Entrada):** Os dados preenchidos no questionario sao encapsulados na instancia de `PerfilUsuario(...)` e declarados na memoria de trabalho.
+2. **Camada 2 (Indicadores Intermediarios, salience=10):** Regras avaliam combinacoes de atributos e declaram fatos intermediarios (`Indicador`), reduzindo acoplamento e facilitando a reutilizacao de premissas logicas.
+3. **Camada 3 (Regras de Pontuacao por Trilha, salience=0):** Regras cruzadas combinam indicadores e respostas diretas para atribuir pontos as trilhas correspondentes. Cada trilha possui ao menos duas regras associadas.
+4. **Camada 4 (Desambiguacao Critica, salience=20):** Regras com prioridade mais alta atuam especificamente para resolver sobreposicoes entre trilhas com caracteristicas proximas:
+   - Ciencia de Dados vs. Engenharia de Dados (diferencia pelo objetivo de modelagem preditiva e nivel de matematica versus construcao de pipelines de ETL e SQL);
+   - Front-end vs. Mobile (diferencia pela plataforma web versus celular);
+   - Back-end vs. Cloud vs. DevOps (diferencia foco em regras de negocio/APIs versus arquitetura em nuvem versus esteiras de deploy CI/CD);
+   - Ciberseguranca vs. Infraestrutura (diferencia mentalidade investigativa de ameacas versus operacao);
+   - QA vs. Back-end (diferencia rotina de testes sistematicos versus desenvolvimento de novas funcoes);
+   - Gestao de Produtos vs. Front-end (diferencia articulacao de negocio/pessoas versus implementacao de interfaces).
+5. **Camada 5 (Decisao e Fallback, salience=-50 e -100):** Com salience negativa, consolida a pontuacao final. Em caso de empate, utiliza a ordem de precedencia definida no catalogo. Caso o questionario seja submetido sem combinacoes conclusivas, a regra de fallback atribui a trilha de Back-end com justificativa documentada.
 
 ---
 
-## ⚙️ 4. O Patch de Compatibilidade do Experta (Python 3.10+)
+## 4. Nota de Compatibilidade da Biblioteca Experta (Python 3.10+)
 
-A biblioteca `experta` (versão 1.9.4) foi concebida na vigência de versões anteriores do Python e referencia classes abstratas diretamente a partir do módulo `collections` (em especial via sua dependência `frozendict`). No Python 3.10 e Python 3.12, estas classes foram transferidas definitivamente para `collections.abc`, provocando erros do tipo `AttributeError: module 'collections' has no attribute 'Mapping'`.
+A biblioteca `experta` (versao 1.9.4) acessa classes abstratas diretamente pelo modulo `collections`. A partir do Python 3.10 (e confirmado no Python 3.12), essas classes foram movidas para `collections.abc`, o que gera erro de `AttributeError` em tempo de execucao.
 
-Para sanar este comportamento sem alterar a essência da biblioteca original, foi desenvolvido o módulo [`src/compat.py`](file:///home/fycer/Documentos/AECO/src/compat.py), que deve ser importado **antes de qualquer importação da biblioteca `experta`**:
+Para contornar essa incompatibilidade sem modificar os fontes internos do pacote, o modulo `src/compat.py` reatribui os identificadores necessarios antes de qualquer importacao do motor:
 
 ```python
 import collections
 import collections.abc
 
-for _name in ("Mapping", "MutableMapping", "Sequence", "MutableSequence", "Iterable", "Callable", "Container", "Hashable", "Sized", "Set", "MutableSet"):
-    if not hasattr(collections, _name) and hasattr(collections.abc, _name):
-        setattr(collections, _name, getattr(collections.abc, _name))
+for name in ("Mapping", "MutableMapping", "Sequence", "MutableSequence", "Iterable", "Callable", "Container", "Hashable", "Sized", "Set", "MutableSet"):
+    if not hasattr(collections, name) and hasattr(collections.abc, name):
+        setattr(collections, name, getattr(collections.abc, name))
 ```
+
+O arquivo `src/__init__.py` importa esse modulo automaticamente, garantindo que o patch esteja sempre ativo nas rotinas de inferencia, testes e aplicacao web.
 
 ---
 
-## 🚀 5. Requisitos e Guia de Instalação
+## 5. Requisitos e Instalacao
 
-### Pré-requisitos
-- **Python 3.10 ou superior** (testado e homologado no Python 3.12.3).
-- Gerenciador de pacotes `pip` e utilitário `venv`.
+### Requisitos
+- Python 3.10 ou superior (ambiente validado no Python 3.12.3)
+- Gerenciador de pacotes pip
 
-### Passo a Passo
+### Procedimento
 
-1. **Clone o repositório ou acesse o diretório do projeto:**
+1. Clonar ou descompactar o repositorio e navegar ate a raiz do projeto:
    ```bash
-   git clone <URL_DO_REPOSITORIO>
    cd consultor-carreiras-ti
    ```
 
-2. **Crie e ative o ambiente virtual:**
-   - **No Linux/macOS:**
+2. Criar e ativar o ambiente virtual:
+   - Linux/macOS:
      ```bash
      python3 -m venv .venv
      source .venv/bin/activate
      ```
-   - **No Windows (PowerShell):**
+   - Windows (PowerShell):
      ```powershell
      python -m venv .venv
      .venv\Scripts\Activate.ps1
      ```
-   - **No Windows (Prompt de Comando):**
+   - Windows (CMD):
      ```cmd
      python -m venv .venv
      .venv\Scripts\activate.bat
      ```
 
-3. **Instale as dependências fixadas:**
+3. Instalar os pacotes necessarios:
    ```bash
    pip install -r requirements.txt
    ```
 
 ---
 
-## 💻 6. Como Executar a Aplicação Web
+## 6. Execucao da Aplicacao
 
-Com o ambiente virtual ativado, inicie o servidor Streamlit:
+Com o ambiente virtual ativado, executar:
 
 ```bash
 streamlit run app.py
 ```
 
-A interface abrirá automaticamente no seu navegador padrão no endereço:
-`http://localhost:8501`
+O servidor local ficara disponivel em `http://localhost:8501`.
 
 ---
 
-## 🧪 7. Como Executar a Suíte de Testes Automatizados
+## 7. Execucao dos Testes Automatizados
 
-Para executar os testes unitários e de integração com cobertura das 10 personas e das regras:
+Os testes estao implementados em pytest e cobrem tanto a integridade da base de regras quanto a avaliacao de personas representativas para cada uma das 10 trilhas:
 
 ```bash
 pytest -v -s
 ```
 
-### Resultados da Validação com Personas de Teste
+### Personas Validadas nos Testes
 
-Todas as 10 personas foram validadas com 100% de precisão na primeira inferência:
-
-| Persona | Perfil Chave | Trilha Esperada | Trilha Obtida | Status |
+| Persona | Perfil Resumido | Trilha Esperada | Trilha Obtida | Resultado |
 |---|---|---|---|---|
-| **Persona 1 (Marina)** | Matemática Alta, análise de dados, Python, modelos preditivos, interesse em IA | Ciência de Dados e ML | `ciencia_dados` | ✅ Aprovado |
-| **Persona 2 (Lucas)** | Linux/Redes, defesa contra invasões, ethical hacking, rigor defensivo | Cibersegurança | `ciberseguranca` | ✅ Aprovado |
-| **Persona 3 (Camila)** | JavaScript, interfaces web reativas, produto visual ao usuário | Front-end & UI/UX | `frontend` | ✅ Aprovado |
-| **Persona 4 (Rodrigo)** | Gestão de produto, alta habilidade com pessoas e negócios, impacto de mercado | Gestão de Produtos | `gestao_produtos` | ✅ Aprovado |
-| **Persona 5 (Bruno)** | Java/C#, regras de negócio corporativas, APIs de backend e servidores | Desenvolvimento Back-end | `backend` | ✅ Aprovado |
-| **Persona 6 (Beatriz)** | SQL, pipelines de ETL/ELT, sustentação de Data Lakes em massa | Engenharia de Dados | `engenharia_dados` | ✅ Aprovado |
-| **Persona 7 (Thiago)** | Linux, automação CI/CD, esteiras de deploy contínuo, contêineres | DevOps & SRE | `devops` | ✅ Aprovado |
-| **Persona 8 (Gabriel)** | Ambientes em nuvem pública (AWS), arquitetura escalável e resiliente | Computação em Nuvem | `cloud` | ✅ Aprovado |
-| **Persona 9 (Juliana)** | Dart/Flutter, ecossistema móvel, experiência fluida no smartphone | Desenvolvimento Mobile | `mobile` | ✅ Aprovado |
-| **Persona 10 (Felipe)** | Automação de testes, rigor cirúrgico contra bugs, garantia de conformidade | Engenharia de QA & Testes | `qa` | ✅ Aprovado |
+| Marina | Matematica alta, foco em estatistica e modelos preditivos, Python | Ciencia de Dados e ML | ciencia_dados | Aprovado |
+| Lucas | Redes, Linux, analise de vulnerabilidades e defesa contra ataques | Ciberseguranca | ciberseguranca | Aprovado |
+| Camila | Criacao de layouts visuais, usabilidade e JavaScript em ambiente web | Front-end & UI/UX | frontend | Aprovado |
+| Rodrigo | Habilidades interpessoais altas, priorizacao de backlog e estrategia | Gestao de Produtos | gestao_produtos | Aprovado |
+| Bruno | Logica de servico, APIs e bancos de dados em Java/C# | Desenvolvimento Back-end | backend | Aprovado |
+| Beatriz | Construcao de pipelines ETL, SQL e infraestrutura de Data Lakes | Engenharia de Dados | engenharia_dados | Aprovado |
+| Thiago | Automacao operacional, esteiras CI/CD, conteineres e Linux | DevOps & SRE | devops | Aprovado |
+| Gabriel | Dimensionamento de servicos em nuvem pública (AWS), resiliencia | Computacao em Nuvem | cloud | Aprovado |
+| Juliana | Construcao de aplicativos moveis em Dart/Flutter | Desenvolvimento Mobile | mobile | Aprovado |
+| Felipe | Rigor com cenarios extremos, testes automatizados e prevencao de falhas | Engenharia de QA & Testes | qa | Aprovado |
 
 ---
 
-## 📊 8. Contagem Formal de Regras
+## 8. Resumo da Base de Regras
 
-- **Regras de Indicadores Intermediários:** 6 regras
-- **Regras Cruzadas de Pontuação por Trilha:** 20 regras (2 por trilha)
-- **Regras de Desambiguação Crítica:** 10 regras
-- **Regras de Decisão Final e Fallback:** 2 regras
-- **Total no `KnowledgeEngine`:** **38 regras `@Rule`** (cumprindo e superando amplamente o requisito de 20–25 regras).
-
----
-
-## 📦 9. Histórico Sugerido de Commits Git
-
-```bash
-git init
-git add .gitignore
-git commit -m "chore: inicializacao do repositorio e configuracao do .gitignore"
-
-git add docs/matriz_decisao.md
-git commit -m "feat: fase 1 - matriz de decisao e engenharia de conhecimento formalizada"
-
-git add src/
-git commit -m "feat: fase 2 - base de conhecimento experta com 38 regras e patch de compatibilidade"
-
-git add app.py
-git commit -m "feat: fase 3 - interface web interativa em streamlit desacoplada da inferencia"
-
-git add tests/
-git commit -m "test: fase 4 - validacao automatizada com 10 personas e integridade do motor"
-
-git add README.md requirements.txt
-git commit -m "docs: fase 5 - documentacao completa e dependencias fixadas para entrega"
-```
+- Regras de Indicadores (Camada 2): 6
+- Regras de Pontuacao Direta (Camada 3): 20 (2 regras por trilha)
+- Regras de Desambiguacao (Camada 4): 10
+- Regras de Conclusao e Fallback (Camada 5): 2
+- **Total de metodos @Rule:** 38 regras implementadas em `ConsultorCarreirasEngine`.
