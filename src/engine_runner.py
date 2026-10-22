@@ -44,24 +44,19 @@ def recomendar(respostas: Dict[str, Any]) -> Dict[str, Any]:
     engine = ConsultorCarreirasEngine()
     engine.reset()
 
-    # Sanitização e injeção de valores padrão para campos opcionais não informados
+    # Mapeamento e preservacao dos campos informados
     sanitized: Dict[str, Any] = {
-        "matematica": respostas.get("matematica", "Média"),
-        "atuacao": respostas.get("atuacao", "backend_api"),
-        "linguagem": respostas.get("linguagem", "iniciante"),
-        "entrega": respostas.get("entrega", "logica_invisivel"),
-        "plataforma": respostas.get("plataforma", "dados_negocio"),
-        "interesse_ia": respostas.get("interesse_ia", "nao"),
-        "foco_dados": respostas.get("foco_dados", "nenhum"),
-        "habilidades_gestao": respostas.get("habilidades_gestao", "media"),
-        "rigor_qualidade": respostas.get("rigor_qualidade", "equilibrado"),
-        "interesse_automacao": respostas.get("interesse_automacao", "nao"),
+        "matematica": respostas.get("matematica"),
+        "atuacao": respostas.get("atuacao"),
+        "linguagem": respostas.get("linguagem"),
+        "entrega": respostas.get("entrega"),
+        "plataforma": respostas.get("plataforma"),
+        "interesse_ia": respostas.get("interesse_ia"),
+        "foco_dados": respostas.get("foco_dados"),
+        "habilidades_gestao": respostas.get("habilidades_gestao"),
+        "rigor_qualidade": respostas.get("rigor_qualidade"),
+        "interesse_automacao": respostas.get("interesse_automacao"),
     }
-
-    # Atualiza com as respostas explícitas fornecidas
-    for k, v in respostas.items():
-        if v is not None:
-            sanitized[k] = v
 
     # Declara o fato PerfilUsuario e dispara o ciclo de encadeamento para frente
     engine.declare(PerfilUsuario(**sanitized))
