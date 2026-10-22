@@ -1,4 +1,4 @@
-"""Catálogo oficial de metadados das 10 trilhas profissionais de TI."""
+"""Catalogo oficial de metadados das 10 trilhas profissionais de TI."""
 
 from typing import Dict, Any
 
@@ -6,132 +6,124 @@ TRILHAS: Dict[str, Dict[str, Any]] = {
     "backend": {
         "id": "backend",
         "nome": "Desenvolvimento Back-end",
-        "icone": "⚙️",
-        "resumo": "Lógica de servidores, construção de APIs, regras de negócio e bancos de dados.",
+        "icone": "",
+        "resumo": "Logica de servidores, construcao de APIs, regras de negocio e bancos de dados.",
         "descricao": (
-            "O profissional de Back-end projeta e desenvolve a espinha dorsal de aplicações web e corporativas. "
-            "É responsável pela persistência em bancos de dados relacionais e NoSQL, autenticação segura, "
-            "alta performance de processamento, regras de negócio complexas e integração via APIs RESTful e GraphQL."
+            "O profissional de Back-end projeta e desenvolve a arquitetura de servicos de aplicacoes corporativas. "
+            "E responsavel pela persistencia em bancos de dados relacionais e NoSQL, autenticacao segura, "
+            "processamento de alto desempenho, regras de negocio e integracao por APIs RESTful e GraphQL."
         ),
         "tecnologias_chave": ["Java / Spring Boot", "Python / FastAPI", "Node.js", "C# / .NET", "PostgreSQL", "Redis", "Docker"],
-        "soft_skills": ["Pensamento lógico estruturado", "Atenção a padrões arquiteturais", "Resolução sistemática de problemas"],
+        "soft_skills": ["Pensamento logico estruturado", "Padroes arquiteturais", "Resolucao analitica de problemas"],
     },
     "frontend": {
         "id": "frontend",
         "nome": "Desenvolvimento Front-end & UI/UX",
-        "icone": "🎨",
-        "resumo": "Interfaces web responsivas, experiência do usuário (UX) e frameworks reativos modernos.",
+        "icone": "",
+        "resumo": "Interfaces web responsivas, experiencia do usuario (UX) e frameworks modernos.",
         "descricao": (
-            "O engenheiro Front-end transforma protótipos de design em experiências digitais interativas, acessíveis e rápidas. "
-            "Trabalha diretamente na camada visível ao cliente final, dominando frameworks reativos modernos, "
-            "otimização de renderização (Core Web Vitals), animações fluidas e integração eficiente com APIs."
+            "O desenvolvedor Front-end implementa componentes visuais interativos, acessiveis e otimizados. "
+            "Atua na camada cliente utilizando frameworks reativos, tecnicas de otimizacao de renderizacao "
+            "e integracao com servicos web."
         ),
-        "tecnologias_chave": ["JavaScript / TypeScript", "React", "Vue.js / Next.js", "Tailwind CSS / Sass", "Figma", "HTML5 Semântico"],
-        "soft_skills": ["Empatia com o usuário final", "Olhar estético e espacial apurado", "Atenção a detalhes visuais"],
+        "tecnologias_chave": ["JavaScript / TypeScript", "React", "Vue.js / Next.js", "Tailwind CSS / Sass", "Figma", "HTML5 Semantico"],
+        "soft_skills": ["Usabilidade e acessibilidade", "Atencao a detalhes visuais", "Empatia com o usuario"],
     },
     "ciencia_dados": {
         "id": "ciencia_dados",
-        "nome": "Ciência de Dados e Machine Learning",
-        "icone": "🧠",
-        "resumo": "Estatística, modelagem preditiva, análise de grandes massas de dados e inteligência artificial.",
+        "nome": "Ciencia de Dados e Machine Learning",
+        "icone": "",
+        "resumo": "Estatistica, modelagem preditiva, analise de dados e inteligencia artificial.",
         "descricao": (
-            "O Cientista de Dados aplica rigor matemático, métodos estatísticos e algoritmos de Machine Learning e Deep Learning "
-            "para descobrir padrões ocultos em dados brutos e prever comportamentos futuros. "
-            "Atua na fronteira da Inteligência Artificial gerando insights acionáveis e treinando modelos de alta precisão."
+            "O Cientista de Dados aplica metodos estatisticos e algoritmos de Machine Learning e Deep Learning "
+            "para identificar padroes quantitativos em grandes volumes de informacao e gerar modelos preditivos."
         ),
-        "tecnologias_chave": ["Python (NumPy, Pandas, Scikit-learn)", "PyTorch / TensorFlow", "Jupyter", "SQL Avançado", "Estatística Descritiva e Inferencial"],
-        "soft_skills": ["Curiosidade científica e analítica", "Raciocínio dedutivo", "Comunicação de conclusões quantitativas"],
+        "tecnologias_chave": ["Python (NumPy, Pandas, Scikit-learn)", "PyTorch / TensorFlow", "Jupyter", "SQL Avancado", "Estatistica Descritiva e Inferencial"],
+        "soft_skills": ["Raciocinio dedutivo e quantitativo", "Curiosidade analitica", "Comunicacao tecnica de resultados"],
     },
     "engenharia_dados": {
         "id": "engenharia_dados",
         "nome": "Engenharia de Dados",
-        "icone": "🚰",
-        "resumo": "Arquitetura de dados, construção de pipelines (ETL/ELT) e infraestrutura para Data Lakes.",
+        "icone": "",
+        "resumo": "Arquitetura de dados, construcao de pipelines (ETL/ELT) e infraestrutura para Data Lakes.",
         "descricao": (
-            "O Engenheiro de Dados constrói e mantém os sistemas de encanamento de alta escala que transportam, "
-            "higienizam e disponibilizam petabytes de informações de forma confiável. "
-            "Projeta arquiteturas analíticas robustas, integrando múltiplos sistemas para alimentar Cientistas de Dados e Analistas de BI."
+            "O Engenheiro de Dados projeta e mantem fluxos de ingestao, processamento e transformacao de grandes "
+            "volumes de informacoes. Desenvolve a arquitetura de armazenamento analitico para alimentar sistemas de analise e BI."
         ),
         "tecnologias_chave": ["Apache Spark", "Airflow / Prefect", "Kafka", "SQL & NoSQL", "dbt", "Snowflake / BigQuery", "AWS S3 / Data Lake"],
-        "soft_skills": ["Pensamento sistêmico de fluxo", "Rigor com governança e integridade", "Preocupação com escalabilidade contínua"],
+        "soft_skills": ["Pensamento sistemico de fluxo", "Governanca de dados", "Escalabilidade e monitoramento"],
     },
     "ciberseguranca": {
         "id": "ciberseguranca",
-        "nome": "Cibersegurança (Security / Pentesting)",
-        "icone": "🛡️",
-        "resumo": "Defesa cibernética, análise de vulnerabilidades, criptografia, redes seguras e ethical hacking.",
+        "nome": "Ciberseguranca (Security / Pentesting)",
+        "icone": "",
+        "resumo": "Defesa cibernetica, analise de vulnerabilidades, criptografia e seguranca de redes.",
         "descricao": (
-            "O especialista em Cibersegurança atua como o escudo digital de organizações. "
-            "Identifica vulnerabilidades ativamente através de simulações de ataques (pentest / Red Team) e desenvolve "
-            "estratégias rigorosas de defesa e mitigação de incidentes (Blue Team), aplicando criptografia e auditorias contínuas."
+            "O especialista em Ciberseguranca atua na protecao de infraestruturas e aplicacoes. "
+            "Realiza testes de intrusao (pentest), auditorias de codigo, analise de vulnerabilidades e resposta a incidentes de seguranca."
         ),
-        "tecnologias_chave": ["Linux Avançado & Kali", "Wireshark / Nmap", "Burp Suite", "Protocolos de Rede (TCP/IP)", "Criptografia", "OWASP Top 10"],
-        "soft_skills": ["Pensamento defensivo e investigativo", "Ética profissional inabalável", "Calma sob pressão em incidentes"],
+        "tecnologias_chave": ["Linux & Kali", "Wireshark / Nmap", "Burp Suite", "Protocolos de Rede (TCP/IP)", "Criptografia", "OWASP Top 10"],
+        "soft_skills": ["Pensamento investigativo", "Etica profissional", "Gestao de risco e conformidade"],
     },
     "devops": {
         "id": "devops",
         "nome": "DevOps & SRE",
-        "icone": "🚀",
-        "resumo": "Automação de processos, integração e entrega contínua (CI/CD), contêineres e confiabilidade de sistemas.",
+        "icone": "",
+        "resumo": "Automacao operacional, integracao e entrega continua (CI/CD), conteineres e confiabilidade de sistemas.",
         "descricao": (
-            "O engenheiro DevOps/SRE une os mundos de desenvolvimento de software e operações. "
-            "Sua missão é criar esteiras automatizadas de entrega rápida e segura de código (CI/CD), "
-            "gerenciar orquestração em contêineres, implementar infraestrutura como código (IaC) e garantir uptime e resiliência máxima."
+            "O engenheiro DevOps/SRE integra desenvolvimento e operacoes por meio da automacao de esteiras "
+            "de entrega continua (CI/CD), orquestracao de conteineres, infraestrutura como codigo (IaC) e monitoramento de disponibilidade."
         ),
         "tecnologias_chave": ["Docker", "Kubernetes", "GitHub Actions / GitLab CI", "Terraform", "Ansible", "Prometheus / Grafana", "Bash / Python"],
-        "soft_skills": ["Cultura de automação implacável", "Proatividade na mitigação de atritos", "Resiliência operacional"],
+        "soft_skills": ["Cultura de automacao", "Gestao de incidentes", "Resiliencia operacional"],
     },
     "cloud": {
         "id": "cloud",
-        "nome": "Computação em Nuvem (Cloud Architecture)",
-        "icone": "☁️",
-        "resumo": "Planejamento, migração e gestão de infraestruturas escaláveis e distribuídas em nuvem (AWS/Azure/GCP).",
+        "nome": "Computacao em Nuvem (Cloud Architecture)",
+        "icone": "",
+        "resumo": "Planejamento, migracao e gestao de infraestruturas escalaveis em nuvem (AWS/Azure/GCP).",
         "descricao": (
-            "O Arquiteto Cloud desenha soluções globais de infraestrutura corporativa na nuvem. "
-            "Define estratégias de alta disponibilidade, disaster recovery, redução de custos computacionais (FinOps) "
-            "e migração de sistemas legados para ambientes serverless e microsserviços distribuídos."
+            "O Arquiteto Cloud planeja solucoes de infraestrutura distribuidas e escalaveis. "
+            "Define modelos de alta disponibilidade, planos de recuperacao de desastres, gestao de custos computacionais (FinOps) e arquiteturas serverless."
         ),
         "tecnologias_chave": ["AWS (EC2, S3, Lambda, VPC)", "Microsoft Azure", "Google Cloud Platform", "Terraform", "FinOps", "Arquiteturas Serverless"],
-        "soft_skills": ["Visão estratégica de arquitetura", "Capacidade de negociação técnica", "Gestão de risco tecnológico"],
+        "soft_skills": ["Visao estrategica de arquitetura", "Negociacao tecnica", "Analise de custo-beneficio"],
     },
     "mobile": {
         "id": "mobile",
         "nome": "Desenvolvimento Mobile",
-        "icone": "📱",
-        "resumo": "Ecossistema de dispositivos móveis com desenvolvimento nativo ou multiplataforma reativo.",
+        "icone": "",
+        "resumo": "Ecossistema de dispositivos moveis com desenvolvimento nativo ou multiplataforma.",
         "descricao": (
-            "O desenvolvedor Mobile cria aplicativos para a experiência na palma da mão em smartphones e wearables. "
-            "Domina particularidades de ciclos de vida de apps em segundo plano, otimização extrema de memória e bateria, "
-            "funcionalidades de hardware (câmera, sensores, GPS) e publicação nas lojas App Store e Google Play."
+            "O desenvolvedor Mobile cria aplicacoes para smartphones e tablets. "
+            "Gerencia ciclos de vida de aplicativos, consumo de bateria, gerenciamento de memoria e integracao com sensores de hardware."
         ),
-        "tecnologias_chave": ["Flutter / Dart", "React Native", "Kotlin (Android Nativo)", "Swift (iOS Nativo)", "Mobile UX", "SQLite / Realm"],
-        "soft_skills": ["Sensibilidade à fluidez e toque", "Atenção às limitações de hardware móvel", "Respeito a diretrizes Apple/Google"],
+        "tecnologias_chave": ["Flutter / Dart", "React Native", "Kotlin (Android)", "Swift (iOS)", "Mobile UX", "SQLite / Realm"],
+        "soft_skills": ["Atencao a restricoes de hardware", "Diretrizes de design mobile", "Foco em estabilidade"],
     },
     "qa": {
         "id": "qa",
         "nome": "Engenharia de Qualidade e Testes (QA)",
-        "icone": "🧪",
-        "resumo": "Testes automatizados, confiabilidade de software, prevenção de defeitos e processos de qualidade.",
+        "icone": "",
+        "resumo": "Testes automatizados, confiabilidade de software e garantia de conformidade.",
         "descricao": (
-            "O Engenheiro de Qualidade (QA/SDET) é o guardião dos padrões de excelência de um produto de software. "
-            "Desenvolve suítes completas de testes automatizados (unitários, de integração, E2E e testes de carga), "
-            "validando cenários de borda e garantindo que novas funcionalidades não quebrem o comportamento esperado do sistema."
+            "O Engenheiro de Qualidade projeta e executa suites de testes automatizados (unitarios, integracao, E2E e carga). "
+            "Garante a conformidade dos requisitos de software e previne a introducao de regressoes no produto."
         ),
-        "tecnologias_chave": ["Cypress / Playwright", "Selenium", "Postman / Newman", "Pytest / JUnit", "JMeter (Testes de Carga)", "CI/CD para testes"],
-        "soft_skills": ["Atenção cirúrgica aos detalhes", "Pensamento analítico de quebra de regras", "Comunicação assertiva e construtiva"],
+        "tecnologias_chave": ["Cypress / Playwright", "Selenium", "Postman / Newman", "Pytest / JUnit", "JMeter", "CI/CD para testes"],
+        "soft_skills": ["Rigor analitico", "Pensamento critico de borda", "Comunicacao assertiva"],
     },
     "gestao_produtos": {
         "id": "gestao_produtos",
-        "nome": "Gestão de Produtos (Product Management)",
-        "icone": "📊",
-        "resumo": "Ponte entre negócios, design e desenvolvimento, metodologias ágeis e priorização estratégica.",
+        "nome": "Gestao de Produtos (Product Management)",
+        "icone": "",
+        "resumo": "Ponte entre negocios, design e desenvolvimento, metodologias ageis e priorizacao de backlog.",
         "descricao": (
-            "O Product Manager (PM) lidera pelo convencimento, conectando a estratégia corporativa com as necessidades dos clientes "
-            "e a capacidade de entrega técnica da engenharia. "
-            "Define visões de produto, prioriza backlogs de funcionalidades com base em valor de negócio, define métricas de impacto (OKRs) e lidera cerimônias ágeis."
+            "O Product Manager define a visao e o roadmap de produto com base nas necessidades de negocio e clientes. "
+            "Prioriza backlogs de funcionalidades, estabelece metricas de impacto (OKRs) e conduz cerimonias em equipes ageis."
         ),
-        "tecnologias_chave": ["Scrum / Kanban / Ágil", "Jira / Linear", "Product Discovery", "Mapeamento de Jornada", "Análise de Métricas (Amplitude, Mixpanel)", "OKRs"],
-        "soft_skills": ["Liderança influenciadora e interpessoal", "Negociação e diplomacia", "Visão holística de negócio"],
+        "tecnologias_chave": ["Scrum / Kanban", "Jira / Linear", "Product Discovery", "Mapeamento de Jornada", "Metricas de Produto", "OKRs"],
+        "soft_skills": ["Lideranca por influencia", "Negociacao e alinhamento", "Visao analitica de negocio"],
     },
 }
 
