@@ -17,7 +17,7 @@ env/
 htmlcov/
 
 # Streamlit
-.streamlit/secrets.toml
+.streamlit/
 
 # IDEs
 .vscode/
