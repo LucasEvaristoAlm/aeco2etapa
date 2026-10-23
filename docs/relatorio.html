@@ -5,115 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Relatório do Projeto | Consultor de Carreiras em TI</title>
   <style>
-    @page { size: A4; margin: 19mm; }
+    @page { size: A4; margin: 2.5cm; }
     * { box-sizing: border-box; }
-    body { margin: 0; color: #172b3a; font: 10.5pt/1.5 "Liberation Sans", sans-serif; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { font-size: 30pt; line-height: 1.08; margin-bottom: 12pt; }
-    h2 { margin: 0 0 10pt; padding-bottom: 5pt; border-bottom: 1.5pt solid #087e83; font-size: 17pt; }
-    h3 { margin: 11pt 0 4pt; font-size: 11pt; }
-    p { margin-bottom: 8pt; }
-    .cover { min-height: 245mm; }
-    .kicker, .eyebrow { color: #087e83; font-size: 9pt; font-weight: 700; letter-spacing: 1.2pt; text-transform: uppercase; }
-    .cover-main { margin-top: 39mm; max-width: 145mm; }
-    .cover-main p { color: #526674; font-size: 14pt; max-width: 125mm; }
-    .cover-rule { width: 32mm; border-top: 4pt solid #087e83; margin: 18pt 0; }
-    .cover-meta { border-top: 1pt solid #d6e1e4; padding-top: 11pt; color: #526674; }
-    .cover-meta strong { color: #172b3a; }
-    .lead { color: #526674; font-size: 12pt; }
-    .callout { margin: 12pt 0; padding: 10pt 12pt; border-left: 3pt solid #087e83; background: #edf5f4; }
-    .stats { width: 100%; border-collapse: collapse; margin: 12pt 0 17pt; }
-    .stats td { width: 33.33%; padding: 10pt; border: 1pt solid #d6e1e4; vertical-align: top; }
-    .stats strong { color: #087e83; font-size: 20pt; line-height: 1.2; }
-    .stats span { color: #526674; font-size: 9pt; }
-    table.tracks { width: 100%; border-collapse: collapse; font-size: 9pt; }
-    .tracks th, .tracks td { padding: 5pt 6pt; border-bottom: 1pt solid #d6e1e4; text-align: left; vertical-align: top; }
-    .tracks th { background: #edf5f4; color: #172b3a; }
-    .tracks td:first-child { width: 28%; font-weight: 700; }
-    ol.layers { padding-left: 19pt; }
-    .layers li { margin: 0 0 6pt; padding-left: 2pt; }
-    .note { color: #526674; font-size: 9pt; }
-    .result { color: #126442; font-weight: 700; }
-    .footer { margin-top: 18pt; padding-top: 7pt; border-top: 1pt solid #d6e1e4; color: #526674; font-size: 8pt; }
+    body { margin: 0; color: #000; font: 12pt/1.5 "Liberation Serif", serif; }
+    h1, h2, p { margin-top: 0; }
+    h1 { font-size: 18pt; margin-bottom: 18pt; }
+    h2 { margin: 14pt 0 6pt; font-size: 14pt; }
+    p { margin-bottom: 8pt; text-align: justify; }
+    .cover { min-height: 245mm; padding-top: 45mm; text-align: center; }
+    .cover p { text-align: center; }
+    table.tracks { width: 100%; border-collapse: collapse; font-size: 10pt; }
+    .tracks th, .tracks td { padding: 4pt 6pt; border: 0.5pt solid #555; text-align: left; vertical-align: top; }
+    .tracks td:first-child { width: 30%; }
   </style>
 </head>
 <body>
   <section class="cover">
-    <div class="kicker">Relatório de projeto · Inteligência Artificial</div>
-    <div class="cover-main">
-      <div class="cover-rule"></div>
-      <h1>Consultor de Carreiras em TI</h1>
-      <p>Sistema especialista baseado em regras para recomendação explicável de trilhas profissionais em Tecnologia da Informação.</p>
-    </div>
-    <div class="cover-meta">
-      <p><strong>Curso:</strong> Ciência da Computação<br>
-      <strong>Instituição:</strong> UNIPAC Barbacena<br>
-      <strong>Tecnologias centrais:</strong> Python, Experta e Streamlit</p>
-      <p>22 de outubro de 2026</p>
-    </div>
+    <h1>Consultor de Carreiras em TI</h1>
+    <p>Relatório do projeto de Inteligência Artificial</p>
+    <p>Ciência da Computação · 6º período<br>
+    UNIPAC Barbacena</p>
+    <p>22 de outubro de 2026</p>
   </section>
 
   <div style="page-break-before: always; break-before: page">&nbsp;</div>
-  <section class="page">
-    <div class="eyebrow">01 · Visão geral</div>
-    <h2>Objetivo e proposta</h2>
-    <p class="lead">O projeto transforma respostas de um questionário estruturado em uma recomendação de carreira técnica, acompanhada por pontuação, ranking e justificativas produzidas pelas regras acionadas.</p>
-    <p>A aplicação foi desenvolvida como atividade acadêmica de Inteligência Artificial. Seu propósito é demonstrar representação de conhecimento e inferência por regras de produção, não substituir orientação profissional nem avaliar competências por evidências de mercado.</p>
-    <table class="stats">
-      <tr>
-        <td><strong>10</strong><br><span>trilhas profissionais avaliadas</span></td>
-        <td><strong>38</strong><br><span>regras registradas no motor</span></td>
-        <td><strong>17</strong><br><span>testes automatizados aprovados</span></td>
-      </tr>
-    </table>
-    <h3>Trilhas contempladas</h3>
+  <main>
+    <h2>Apresentação</h2>
+    <p>Este trabalho apresenta um sistema que recomenda áreas de atuação em Tecnologia da Informação. A recomendação é feita a partir das respostas de um questionário sobre interesses, tecnologias e preferências de trabalho.</p>
+    <p>O sistema foi desenvolvido em Python. A interface foi feita com Streamlit e as regras de recomendação usam a biblioteca Experta.</p>
+
+    <h2>Funcionamento</h2>
+    <p>O questionário reúne informações do perfil do usuário. Depois, o motor compara as respostas com as regras cadastradas e calcula uma pontuação para cada área. Ao final, mostra a área recomendada, as demais opções do ranking e as regras que foram utilizadas.</p>
+    <p>O projeto tem 38 regras: seis criam indicadores sobre o perfil, vinte atribuem pontos às áreas, dez ajudam a diferenciar áreas parecidas e duas definem o resultado final ou uma opção padrão quando as respostas não são suficientes.</p>
+
+    <h2>Áreas avaliadas</h2>
     <table class="tracks">
-      <tr><th>Área</th><th>Foco resumido</th></tr>
-      <tr><td>Back-end</td><td>APIs, lógica de negócio e serviços.</td></tr>
-      <tr><td>Front-end e UI/UX</td><td>Interfaces web, usabilidade e experiência visual.</td></tr>
-      <tr><td>Ciência de Dados e ML</td><td>Análise estatística e modelos preditivos.</td></tr>
-      <tr><td>Engenharia de Dados</td><td>Pipelines, ETL/ELT e infraestrutura de dados.</td></tr>
-      <tr><td>Cibersegurança</td><td>Proteção, auditoria e investigação de vulnerabilidades.</td></tr>
-      <tr><td>DevOps e SRE</td><td>Automação de entrega e confiabilidade operacional.</td></tr>
-      <tr><td>Computação em Nuvem</td><td>Arquitetura e escalabilidade de ambientes cloud.</td></tr>
-      <tr><td>Desenvolvimento Mobile</td><td>Aplicativos para Android e iOS.</td></tr>
-      <tr><td>Engenharia de QA</td><td>Testes, conformidade e prevenção de falhas.</td></tr>
-      <tr><td>Gestão de Produtos</td><td>Estratégia, priorização e articulação de equipes.</td></tr>
+      <tr><th>Área</th><th>Atuação principal</th></tr>
+      <tr><td>Back-end</td><td>APIs e lógica de sistemas.</td></tr>
+      <tr><td>Front-end e UI/UX</td><td>Interfaces e experiência de uso.</td></tr>
+      <tr><td>Ciência de Dados</td><td>Análise de dados e modelos preditivos.</td></tr>
+      <tr><td>Engenharia de Dados</td><td>Pipelines e organização de dados.</td></tr>
+      <tr><td>Cibersegurança</td><td>Proteção e análise de segurança.</td></tr>
+      <tr><td>DevOps e SRE</td><td>Automação e operação de sistemas.</td></tr>
+      <tr><td>Computação em Nuvem</td><td>Serviços e infraestrutura em nuvem.</td></tr>
+      <tr><td>Desenvolvimento Mobile</td><td>Aplicativos para celulares.</td></tr>
+      <tr><td>Engenharia de QA</td><td>Testes e qualidade de software.</td></tr>
+      <tr><td>Gestão de Produtos</td><td>Planejamento e prioridades do produto.</td></tr>
     </table>
-    <div class="footer">Consultor de Carreiras em TI · Relatório do projeto</div>
-  </section>
 
-  <div style="page-break-before: always; break-before: page">&nbsp;</div>
-  <section class="page">
-    <div class="eyebrow">02 · Solução</div>
-    <h2>Arquitetura e inferência</h2>
-    <p>A interface em Streamlit coleta as respostas e delega a recomendação ao módulo executor. O executor declara o perfil como fato no motor Experta, que aplica encadeamento para frente (forward chaining) e retorna uma estrutura com a trilha indicada, os pontos, o ranking e o histórico de regras disparadas.</p>
-    <ol class="layers">
-      <li><strong>Entrada:</strong> respostas do perfil são representadas como fatos.</li>
-      <li><strong>Indicadores:</strong> seis regras sintetizam características como perfil analítico, experiência do usuário e orientação a negócios.</li>
-      <li><strong>Pontuação:</strong> vinte regras cruzam respostas e indicadores para pontuar as trilhas.</li>
-      <li><strong>Desambiguação:</strong> dez regras tratam fronteiras comuns, como Ciência versus Engenharia de Dados e Back-end versus Cloud versus DevOps.</li>
-      <li><strong>Decisão:</strong> duas regras consolidam a recomendação, resolvem empates por ordem canônica e fornecem fallback para perfis sem sinais conclusivos.</li>
-    </ol>
-    <div class="callout"><strong>Explicabilidade:</strong> a recomendação não é apenas um rótulo. O resultado expõe pontuações, ranking, indicadores e regras que fundamentaram a decisão, permitindo rastrear a lógica aplicada.</div>
-    <h3>Organização do código</h3>
-    <p><strong>Interface:</strong> <code>app.py</code>. <strong>Inferência:</strong> <code>src/knowledge_base.py</code> e <code>src/engine_runner.py</code>. <strong>Entradas e catálogo:</strong> <code>src/questions.py</code>, <code>src/facts.py</code> e <code>src/trilhas.py</code>. <strong>Regras documentadas:</strong> <code>docs/matriz_decisao.md</code>.</p>
-    <p class="note">O módulo de compatibilidade adapta o acesso a classes abstratas de collections para permitir o uso da versão Experta 1.9.4 em Python 3.10 ou superior, sem alterar a biblioteca instalada.</p>
-    <div class="footer">Consultor de Carreiras em TI · Relatório do projeto</div>
-  </section>
+    <h2>Implementação e testes</h2>
+    <p>O código separa a interface, as perguntas, os dados das áreas profissionais e o motor de regras. Essa organização permite alterar o questionário ou as regras sem concentrar tudo em um único arquivo.</p>
+    <p>Os testes verificam as regras, as recomendações para diferentes perfis, os casos em que duas áreas podem ser confundidas e o comportamento para respostas inconclusivas. Ao executar <code>python -m pytest -q</code>, foram aprovados 17 testes.</p>
 
-  <div style="page-break-before: always; break-before: page">&nbsp;</div>
-  <section class="page">
-    <div class="eyebrow">03 · Verificação e conclusão</div>
-    <h2>Testes e resultados</h2>
-    <p>A suíte automatizada foi executada no ambiente virtual do projeto com <code>python -m pytest -q</code>. O resultado observado foi <span class="result">17 passed</span>.</p>
-    <p>Os testes cobrem a quantidade de regras, a presença das trilhas no catálogo, os principais cenários de desambiguação, o fallback para perfil indeciso e a identificação de respostas obrigatórias ausentes. Também há testes com personas representativas para as dez recomendações.</p>
-    <h3>Conclusão</h3>
-    <p>O sistema implementa um fluxo funcional de recomendação vocacional apoiado por regras explícitas. A separação entre interface, fatos, catálogo de trilhas, executor e base de conhecimento facilita compreender e manter o comportamento. A suíte aprovada oferece evidência de consistência para os cenários atualmente cobertos.</p>
-    <h3>Limites e próximos passos</h3>
-    <p>As pontuações refletem escolhas de modelagem definidas para a atividade e não foram calibradas com dados de usuários ou avaliação externa. A recomendação deve ser interpretada como orientação exploratória. Como evolução, o projeto pode ampliar testes de combinações limítrofes, validar a utilidade das recomendações com participantes e revisar periodicamente o catálogo de tecnologias e funções.</p>
-    <div class="callout"><strong>Resultado:</strong> 10 trilhas catalogadas, 38 regras de produção e suíte aprovada com 17 testes no ambiente local verificado.</div>
-    <div class="footer">Relatório elaborado a partir do código, da matriz de decisão e dos testes do repositório · 22/10/2026</div>
-  </section>
+    <h2>Conclusão</h2>
+    <p>O projeto aplica um sistema baseado em regras para relacionar as respostas do questionário a possíveis áreas de atuação em TI. O resultado serve como uma sugestão inicial e não substitui uma avaliação profissional. As regras foram definidas para o trabalho e podem ser aprimoradas com novos testes e opiniões de usuários.</p>
+  </main>
 </body>
 </html>
